@@ -84,6 +84,7 @@ type CalculateShipping struct {
 
 type RateOptions struct {
 	CarrierIds []CarrierID `json:"carrier_ids"`
+	ServiceCodes []string `json:"service_codes"`
 }
 
 type Shipment struct {

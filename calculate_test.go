@@ -12,12 +12,16 @@ func TestCalculate(t *testing.T) {
 	calculation := CalculateShipping{
 		RateOptions: RateOptions{
 			CarrierIds: []CarrierID{UPS_SANDBOX},
+			ServiceCodes: []string{
+				"ups_ground",
+				"ups_3_day_select",
+			},
 		},
 		Shipment:    Shipment{
 			ValidateAddress: "no_validation",
 			ShipTo:          ShipTo{
 				Name:                        "Amanda Miller",
-				Phone:                       "555-555-5555",
+				Phone:                       "",
 				AddressLine1:                "525 S Winchester Blvd",
 				CityLocality:                "San Jose",
 				StateProvince:               "CA",
@@ -51,5 +55,6 @@ func TestCalculate(t *testing.T) {
 	if err != nil {
 		t.Errorf("Error calculating shipping: %s", err.Error())
 	}
-	fmt.Println(calculated.RateResponse.Status)
+	//fmt.Println(calculated)
+	fmt.Println(calculated.RateResponse.Rates)
 }
